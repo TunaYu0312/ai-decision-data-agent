@@ -1,0 +1,11 @@
+skill_id: community_operation_evaluation
+name: 社群运营效果评估
+required_sheets: [community_project, community_participant, distributor_monthly]
+optional_sheets: []
+recommended_questions:
+  - 请评估本期社群陪跑项目是否带来了真实业绩提升，下一期是否值得扩大？
+decision_rules:
+  - if: did_positive
+    recommendation: 可以考虑扩大，但需确认样本匹配质量。
+  - if: did_not_positive
+    recommendation: 暂停扩大，先复盘内容、频率和激励。

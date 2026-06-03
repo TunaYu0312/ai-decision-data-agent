@@ -1,0 +1,110 @@
+month:
+  aliases: [月份, 月, period, year_month]
+region:
+  aliases: [地区, 区域, 大区, market, area]
+distributor_id:
+  aliases: [经销商ID, 经销商编号, 直销员ID, distributor_code, distributor]
+distributor_level:
+  aliases: [经销商等级, 直销员等级, level]
+team_id:
+  aliases: [团队ID, 团队编号, team]
+customer_id_hash:
+  aliases: [顾客ID, 客户ID, 顾客Hash ID, customer_hash, member_id_hash]
+order_id:
+  aliases: [订单ID, 订单编号, order_no]
+order_date:
+  aliases: [订单日期, 下单日期, date]
+sales_amount:
+  aliases: [销售额, 订单金额, 业绩, net_sales, gross_sales, amount]
+order_count:
+  aliases: [订单数, 单数, order_num]
+customer_count:
+  aliases: [顾客数, 客户数]
+new_customer_count:
+  aliases: [新客数, 新顾客数]
+repeat_customer_count:
+  aliases: [复购顾客数, 复购客户数]
+subscription_count:
+  aliases: [订阅顾客数, 订阅客户数]
+target_amount:
+  aliases: [目标业绩, 目标销售额, target]
+product_id:
+  aliases: [产品ID, 商品ID, sku_id]
+product_name:
+  aliases: [产品名称, 商品名称, sku_name]
+product_category:
+  aliases: [产品类别, 产品品类, 品类, category]
+quantity:
+  aliases: [数量, 销量, 件数, qty]
+gross_margin:
+  aliases: [毛利, 毛利额, margin]
+subscription_start_date:
+  aliases: [订阅开始日期, 开始订阅日期]
+subscription_end_date:
+  aliases: [订阅结束日期, 结束订阅日期]
+subscription_status:
+  aliases: [订阅状态, 状态]
+monthly_subscription_amount:
+  aliases: [月订阅金额, 月费]
+total_subscription_revenue:
+  aliases: [累计订阅收入, 总订阅收入]
+new_subscriber_count:
+  aliases: [新增订阅数, 新增订阅顾客数]
+active_subscriber_count:
+  aliases: [有效订阅数, 有效订阅顾客数]
+churned_subscriber_count:
+  aliases: [流失订阅数, 流失订阅顾客数]
+retained_subscriber_count:
+  aliases: [留存订阅数, 留存订阅顾客数]
+subscription_revenue:
+  aliases: [订阅收入]
+eligible_flag:
+  aliases: [是否可推广对象, 可推广对象]
+activated_flag:
+  aliases: [是否激活, 激活]
+activation_date:
+  aliases: [激活日期]
+usage_count:
+  aliases: [使用次数, 使用频次]
+active_days:
+  aliases: [活跃天数]
+feature_used_count:
+  aliases: [使用功能数]
+customer_interaction_count:
+  aliases: [客户互动次数]
+prysm_generated_leads:
+  aliases: [Prysm带来线索数, 工具线索数]
+community_project_id:
+  aliases: [社群项目ID, 项目ID]
+project_name:
+  aliases: [项目名称]
+start_date:
+  aliases: [开始日期]
+end_date:
+  aliases: [结束日期]
+project_type:
+  aliases: [项目类型]
+target_objective:
+  aliases: [目标]
+treatment_flag:
+  aliases: [是否参与陪跑, 实验组, treatment]
+control_group_flag:
+  aliases: [是否对照组, 对照组]
+participation_level:
+  aliases: [参与强度]
+checkin_count:
+  aliases: [打卡次数]
+task_completion_rate:
+  aliases: [任务完成率]
+group_owner_id:
+  aliases: [群主ID]
+campaign_id:
+  aliases: [活动ID]
+campaign_name:
+  aliases: [活动名称]
+campaign_type:
+  aliases: [活动类型]
+campaign_cost:
+  aliases: [活动成本]
+target_product_id:
+  aliases: [主推产品ID]

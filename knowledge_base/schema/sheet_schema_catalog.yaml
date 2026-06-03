@@ -1,0 +1,115 @@
+distributor_monthly:
+  fields:
+    month: {required: true}
+    region: {required: true}
+    distributor_id: {required: true}
+    distributor_level: {required: false}
+    team_id: {required: false}
+    sales_amount: {required: true}
+    order_count: {required: true}
+    customer_count: {required: false}
+    new_customer_count: {required: false}
+    repeat_customer_count: {required: false}
+    subscription_count: {required: false}
+    target_amount: {required: false}
+sales_order:
+  fields:
+    order_id: {required: true}
+    order_date: {required: true}
+    month: {required: true}
+    region: {required: true}
+    distributor_id: {required: true}
+    customer_id_hash: {required: false}
+    product_id: {required: false}
+    product_category: {required: false}
+    sales_amount: {required: true}
+    quantity: {required: false}
+product_master:
+  fields:
+    product_id: {required: true}
+    product_name: {required: false}
+    product_category: {required: false}
+subscription_customer:
+  fields:
+    customer_id_hash: {required: true}
+    distributor_id: {required: true}
+    region: {required: true}
+    subscription_start_date: {required: true}
+    subscription_end_date: {required: false}
+    subscription_status: {required: true}
+    product_id: {required: false}
+    product_category: {required: false}
+    monthly_subscription_amount: {required: false}
+    total_subscription_revenue: {required: false}
+subscription_monthly:
+  fields:
+    month: {required: true}
+    region: {required: true}
+    distributor_id: {required: false}
+    new_subscriber_count: {required: true}
+    active_subscriber_count: {required: true}
+    churned_subscriber_count: {required: false}
+    retained_subscriber_count: {required: false}
+    subscription_revenue: {required: false}
+prysm_usage:
+  fields:
+    month: {required: true}
+    region: {required: true}
+    distributor_id: {required: true}
+    eligible_flag: {required: false}
+    activated_flag: {required: true}
+    activation_date: {required: false}
+    usage_count: {required: true}
+    active_days: {required: false}
+    feature_used_count: {required: false}
+    customer_interaction_count: {required: false}
+    prysm_generated_leads: {required: false}
+community_project:
+  fields:
+    community_project_id: {required: true}
+    project_name: {required: true}
+    start_date: {required: true}
+    end_date: {required: true}
+    project_type: {required: false}
+    target_objective: {required: false}
+community_participant:
+  fields:
+    community_project_id: {required: true}
+    distributor_id: {required: true}
+    region: {required: false}
+    treatment_flag: {required: true}
+    control_group_flag: {required: false}
+    participation_level: {required: false}
+    checkin_count: {required: false}
+    task_completion_rate: {required: false}
+    group_owner_id: {required: false}
+product_sales:
+  fields:
+    month: {required: true}
+    region: {required: false}
+    product_id: {required: true}
+    product_name: {required: false}
+    product_category: {required: true}
+    sales_amount: {required: true}
+    quantity: {required: false}
+    order_count: {required: false}
+    gross_margin: {required: false}
+campaign_master:
+  fields:
+    campaign_id: {required: true}
+    campaign_name: {required: true}
+    start_date: {required: true}
+    end_date: {required: true}
+    campaign_type: {required: false}
+    campaign_cost: {required: false}
+    target_product_id: {required: false}
+campaign_sales:
+  fields:
+    campaign_id: {required: true}
+    order_id: {required: true}
+    order_date: {required: true}
+    distributor_id: {required: false}
+    customer_id_hash: {required: false}
+    product_id: {required: true}
+    sales_amount: {required: true}
+    quantity: {required: false}

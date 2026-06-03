@@ -1,0 +1,12 @@
+skill_id: distributor_performance_fluctuation
+name: 经销商业绩波动归因分析
+required_sheets: [distributor_monthly, sales_order, product_master]
+optional_sheets: [distributor_master]
+recommended_questions:
+  - 请分析5月华东区经销商业绩下降的主要原因，并提出下一步行动计划。
+  - 哪些经销商造成主要业绩波动，哪些经销商可以复制经验？
+decision_rules:
+  - if: sales_down_order_down
+    recommendation: 优先检查经销商活跃度、顾客触达和活动参与。
+  - if: sales_down_ac_down
+    recommendation: 优先检查产品结构、促销折扣和高价值产品占比。

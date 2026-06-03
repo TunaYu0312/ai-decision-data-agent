@@ -1,0 +1,18 @@
+output_sections:
+  - Executive Summary
+  - Data Availability Check
+  - Key Metrics
+  - Key Findings
+  - Root Cause / Driver Analysis
+  - Decision Options
+  - Recommended Decision
+  - Action Plan
+  - KPI Tracking
+  - Risk & Assumptions
+  - Review Plan
+hard_requirements:
+  - Decision Options
+  - Recommended Decision
+  - Action Plan
+  - KPI Tracking
+  - Review Plan

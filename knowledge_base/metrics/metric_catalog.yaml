@@ -1,0 +1,61 @@
+sales_amount:
+  cn_name: 销售额
+  formula: SUM(sales_amount)
+  description: 指定周期内销售金额合计
+order_count:
+  cn_name: 订单数
+  formula: COUNT(DISTINCT order_id)
+  description: 指定周期内订单数量
+ac:
+  cn_name: 客单价
+  formula: sales_amount / order_count
+  description: 每笔订单平均销售金额
+active_distributor_count:
+  cn_name: 活跃经销商人数
+  formula: COUNT(DISTINCT distributor_id where sales_amount > 0)
+  description: 指定周期内产生销售的经销商人数
+new_subscriber_count:
+  cn_name: 新增订阅顾客数
+  formula: COUNT(DISTINCT customer_id_hash where subscription_start_date in period)
+active_subscriber_count:
+  cn_name: 有效订阅顾客数
+  formula: COUNT(DISTINCT customer_id_hash where subscription_status = active)
+subscription_retention_rate:
+  cn_name: 订阅留存率
+  formula: retained_subscribers / subscribers_at_start
+subscription_churn_rate:
+  cn_name: 订阅流失率
+  formula: churned_subscribers / subscribers_at_start
+subscription_ltv:
+  cn_name: 订阅客户LTV
+  formula: SUM(customer_revenue over lifecycle)
+prysm_activation_rate:
+  cn_name: Prysm IO激活率
+  formula: activated_distributors / eligible_distributors
+prysm_active_usage_rate:
+  cn_name: Prysm IO活跃使用率
+  formula: active_users / activated_users
+prysm_usage_depth:
+  cn_name: Prysm IO使用深度
+  formula: usage_count or active_days
+community_participation_rate:
+  cn_name: 社群陪跑参与率
+  formula: participants / invited_distributors
+community_sales_uplift:
+  cn_name: 社群陪跑业绩提升
+  formula: after_sales - before_sales
+did_uplift:
+  cn_name: 双重差分净增量
+  formula: treatment_after_before_change - control_after_before_change
+product_mix_share:
+  cn_name: 产品占比
+  formula: product_sales / total_sales
+category_mix_share:
+  cn_name: 品类占比
+  formula: category_sales / total_sales
+campaign_uplift:
+  cn_name: 活动提升
+  formula: campaign_period_sales - baseline_sales
+bundle_attach_rate:
+  cn_name: 组合关联率
+  formula: orders_with_product_a_and_b / orders_with_product_a

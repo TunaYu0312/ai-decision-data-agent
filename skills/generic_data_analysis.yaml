@@ -1,0 +1,9 @@
+skill_id: generic_data_analysis
+name: 通用数据分析
+required_sheets: []
+optional_sheets: []
+recommended_questions:
+  - 请对上传的数据做通用数据理解、质量检查、描述性分析，并给出可继续深入的问题建议。
+decision_rules:
+  - if: unrelated_to_domain_skills
+    recommendation: 不强行套用五个业务专题，先输出通用数据画像、关键分布、异常和后续分析方向。

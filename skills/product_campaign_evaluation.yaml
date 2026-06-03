@@ -1,0 +1,11 @@
+skill_id: product_campaign_evaluation
+name: 产品及活动评估
+required_sheets: [product_sales, sales_order, product_master]
+optional_sheets: [campaign_master, campaign_sales]
+recommended_questions:
+  - 请分析某个主推产品或活动是否带来增量，是否存在产品组合机会或蚕食问题。
+decision_rules:
+  - if: product_share_up_total_up
+    recommendation: 可以加大推广。
+  - if: lift_high
+    recommendation: 可设计套装或联合推荐。

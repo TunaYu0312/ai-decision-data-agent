@@ -1,0 +1,11 @@
+skill_id: subscription_insight
+name: 订阅业务洞察
+required_sheets: [subscription_customer, subscription_monthly, sales_order, product_master]
+optional_sheets: []
+recommended_questions:
+  - 请分析本月订阅业务增长机会在哪里，哪些产品和经销商团队值得优先推动？
+decision_rules:
+  - if: new_high_retention_low
+    recommendation: 优先优化客户预期管理、产品体验和跟进机制。
+  - if: ltv_high
+    recommendation: 提高订阅业务战略优先级。

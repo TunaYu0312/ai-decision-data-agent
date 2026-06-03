@@ -1,0 +1,11 @@
+skill_id: prysm_io_adoption
+name: Prysm IO 推广分析
+required_sheets: [prysm_usage, distributor_monthly]
+optional_sheets: [subscription_monthly]
+recommended_questions:
+  - 请分析 Prysm IO 的激活和使用情况，以及是否与经销商业绩改善有关。
+decision_rules:
+  - if: activation_low
+    recommendation: 优先解决培训、入口、激励和认知问题。
+  - if: active_high_sales_high
+    recommendation: 提炼案例，强化工具推广。
