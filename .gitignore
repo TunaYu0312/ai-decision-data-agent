@@ -1,0 +1,10 @@
+__pycache__/
+.pytest_cache/
+.streamlit/
+.venv/
+.env.local
+*.pyc
+outputs/html_reports/*.html
+outputs/markdown/*.md
+!outputs/html_reports/.gitkeep
+!outputs/markdown/.gitkeep
