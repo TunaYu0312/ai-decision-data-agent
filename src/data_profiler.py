@@ -9,11 +9,39 @@ from .models import DataProfile, SheetProfile, WorkbookContext
 
 PHONE_PATTERN = re.compile(r"(^1[3-9]\d{9}$)|(\b\d{3}[- ]?\d{4}[- ]?\d{4}\b)")
 ID_PATTERN = re.compile(r"\b\d{17}[\dXx]\b")
-NAME_COLUMNS = {"姓名", "真实姓名", "name", "customer_name", "mobile", "手机号", "电话", "身份证"}
+SENSITIVE_COLUMN_NAMES = {
+    "name",
+    "customer_name",
+    "mobile",
+    "phone",
+    "phone_number",
+    "id_card",
+    "id_number",
+    "\u59d3\u540d",
+    "\u771f\u5b9e\u59d3\u540d",
+    "\u624b\u673a\u53f7",
+    "\u7535\u8bdd",
+    "\u8eab\u4efd\u8bc1",
+}
+PERIOD_COLUMN_NAMES = {
+    "month",
+    "date",
+    "order_date",
+    "start_date",
+    "end_date",
+    "\u6708\u4efd",
+    "\u8ba2\u5355\u65e5\u671f",
+    "\u5f00\u59cb\u65e5\u671f",
+    "\u7ed3\u675f\u65e5\u671f",
+}
 
 
 def _detect_period(df: pd.DataFrame) -> tuple[str | None, str | None]:
-    candidates = [col for col in df.columns if str(col).lower() in {"month", "月份", "date", "order_date", "订单日期", "start_date", "end_date"}]
+    candidates = [
+        col
+        for col in df.columns
+        if str(col).strip().lower() in PERIOD_COLUMN_NAMES
+    ]
     values: list[pd.Timestamp] = []
     for col in candidates:
         parsed = pd.to_datetime(df[col], errors="coerce")
@@ -23,16 +51,41 @@ def _detect_period(df: pd.DataFrame) -> tuple[str | None, str | None]:
     return min(values).date().isoformat(), max(values).date().isoformat()
 
 
+def _is_missing_value(value: object) -> bool:
+    try:
+        missing = pd.isna(value)
+    except (TypeError, ValueError):
+        return False
+    return bool(missing) if isinstance(missing, bool) else False
+
+
+def _sample_text_values(df: pd.DataFrame, max_rows: int = 100) -> list[str]:
+    values = df.head(max_rows).to_numpy().flatten().tolist()
+    texts: list[str] = []
+    for value in values:
+        if _is_missing_value(value):
+            continue
+        text = str(value).strip()
+        if text and text.lower() not in {"nan", "nat", "none", "<na>"}:
+            texts.append(text)
+    return texts
+
+
 def _privacy_warnings(df: pd.DataFrame) -> list[str]:
     warnings: list[str] = []
-    sensitive_cols = [str(col) for col in df.columns if str(col).strip().lower() in NAME_COLUMNS]
+    sensitive_cols = [
+        str(col)
+        for col in df.columns
+        if str(col).strip().lower() in SENSITIVE_COLUMN_NAMES
+    ]
     if sensitive_cols:
-        warnings.append(f"发现疑似敏感字段: {', '.join(sensitive_cols)}")
-    sample = df.head(100).astype(str).to_numpy().flatten().tolist()
+        warnings.append(f"Found possible sensitive columns: {', '.join(sensitive_cols)}")
+
+    sample = _sample_text_values(df)
     if any(PHONE_PATTERN.search(value) for value in sample):
-        warnings.append("发现疑似手机号样式数据，建议上传前脱敏。")
+        warnings.append("Found values that look like phone numbers; mask them before sharing.")
     if any(ID_PATTERN.search(value) for value in sample):
-        warnings.append("发现疑似身份证号样式数据，建议上传前移除。")
+        warnings.append("Found values that look like ID numbers; remove or mask them before sharing.")
     return warnings
 
 
